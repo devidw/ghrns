@@ -125,7 +125,7 @@ const suggest = () => {
   api.defaults.headers['X-RapidAPI-Key'] = apiKey.value
 
   const success = (res) => {
-    console.log(res)
+    // console.log(res)
     loading.value = false
     suggestions.value = res.data.suggestions
   }
@@ -142,10 +142,7 @@ const suggest = () => {
   if (tab.value === 'github' && user.value && repo.value) {
     api.get(`/suggest/${user.value}/${repo.value}`).then(success).catch(error)
   } else if (tab.value === 'custom' && desc.value) {
-    api
-      .post(`/suggest`, { description: desc.value })
-      .then(success)
-      .catch(error)
+    api.post(`/suggest`, { description: desc.value }).then(success).catch(error)
   } else {
     loading.value = false
     $q.notify({

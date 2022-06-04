@@ -1,17 +1,17 @@
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.action.onClicked.addListener((/* tab */) => {
-    // Opens our extension in a new browser window.
-    // Only if a popup isn't defined in the manifest.
-    chrome.tabs.create(
-      {
-        url: chrome.runtime.getURL('www/index.html'),
-      },
-      (/* newTab */) => {
-        // Tab opened.
-      }
-    )
-  })
-})
+// chrome.runtime.onInstalled.addListener(() => {
+//   chrome.action.onClicked.addListener((/* tab */) => {
+//     // Opens our extension in a new browser window.
+//     // Only if a popup isn't defined in the manifest.
+//     chrome.tabs.create(
+//       {
+//         url: chrome.runtime.getURL('www/index.html'),
+//       },
+//       (/* newTab */) => {
+//         // Tab opened.
+//       }
+//     )
+//   })
+// })
 
 export default function (bridge /* , allActiveConnections */) {
   bridge.on('storage.get', (event) => {

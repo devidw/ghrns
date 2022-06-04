@@ -1,7 +1,7 @@
 {
   "name": "ghrns",
   "version": "0.1.0",
-  "description": "GitHub Repository Naming Suggestion Service",
+  "description": "AI powered naming suggestions for your GitHub repositories",
   "productName": "ghrns",
   "author": "David Wolf <d@wolf.gdn>",
   "private": true,
