@@ -6,7 +6,7 @@ Let AI suggest namings for your GitHub repositories. Open any public repo on Git
 
 Ever wondered how to name your GitHub repository?
 
-Often we have a very good understanding what our code does, but we don't know how to put all of that into a single repository name.
+Often we have a very good understanding of what our code does, but we don't know how to put all of that into a single repository name.
 
 That's where _GHRNS_ (GitHub Repository Naming Suggestion Service) comes into play: It automatically suggests meaningful names for your repository based on your repository description.
 
