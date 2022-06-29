@@ -62,11 +62,10 @@
 import { ref } from 'vue'
 import { useQuasar, copyToClipboard } from 'quasar'
 import { api } from 'boot/axios'
-import { required } from 'boot/utils'
+import { SuggestionService } from 'boot/SuggestionService'
 
 const $q = useQuasar()
 const tab = ref('custom')
-const apiHost = ref('')
 const apiKey = ref('')
 const desc = ref('')
 const user = ref('')
@@ -76,21 +75,9 @@ const repo = ref('')
 const suggestions = ref([])
 const loading = ref(false)
 // const loading = ref(true)
-const hasAllProvided = () =>
-  apiHost.value && apiKey.value && user.value && repo.value
+const hasAllProvided = () => apiKey.value && user.value && repo.value
 
 if ($q.platform.is.bex) {
-  $q.bex.send('storage.get', { key: 'apiHost' }).then((res) => {
-    if (!res.data || !res.data.length) {
-      $q.notify({
-        type: 'negative',
-        message: 'Please enter your API-URL under the options page.',
-      })
-      return
-    }
-    apiHost.value = res.data
-  })
-
   $q.bex.send('storage.get', { key: 'apiKey' }).then((res) => {
     if (!res.data || !res.data.length) {
       $q.notify({
@@ -116,21 +103,21 @@ if ($q.platform.is.bex) {
   })
 }
 
-const suggest = () => {
+function suggest() {
   loading.value = true
 
-  api.defaults.baseURL = `https://${apiHost.value}`
+  api.defaults.baseURL = 'https://api.openai.com/v1'
   api.defaults.headers['Content-Type'] = 'application/json'
-  api.defaults.headers['X-RapidAPI-Host'] = apiHost.value
-  api.defaults.headers['X-RapidAPI-Key'] = apiKey.value
+  api.defaults.headers['Authorization'] = `Bearer ${apiKey.value}`
 
-  const success = (res) => {
-    // console.log(res)
+  const suggestionService = new SuggestionService(api)
+
+  function success(results) {
     loading.value = false
-    suggestions.value = res.data.suggestions
+    suggestions.value = results
   }
 
-  const error = (err) => {
+  function error(err) {
     console.error(err)
     loading.value = false
     $q.notify({
@@ -140,9 +127,12 @@ const suggest = () => {
   }
 
   if (tab.value === 'github' && user.value && repo.value) {
-    api.get(`/suggest/${user.value}/${repo.value}`).then(success).catch(error)
+    suggestionService
+      .getSuggestionsByUserAndRepo(user.value, repo.value)
+      .then(success)
+      .catch(error)
   } else if (tab.value === 'custom' && desc.value) {
-    api.post(`/suggest`, { description: desc.value }).then(success).catch(error)
+    suggestionService.getSuggestions(desc.value).then(success).catch(error)
   } else {
     loading.value = false
     $q.notify({
@@ -153,7 +143,7 @@ const suggest = () => {
   }
 }
 
-const copy = (suggestion) => {
+function copy(suggestion) {
   copyToClipboard(suggestion)
   $q.notify({
     type: 'positive',
