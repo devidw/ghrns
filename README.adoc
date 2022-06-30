@@ -75,3 +75,7 @@ Access to the browser tabs is needed to detect the current repository. See if th
 
 
 // ==== Host permission justification
+
+
+==== Remote code justification
+Remote code is needed to generate suggestions, since the corresponding API is not part of the extension, it invokes server-side code of a third party service: OpenAI.
