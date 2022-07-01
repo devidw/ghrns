@@ -2,7 +2,7 @@
 
 Let AI suggest namings for your GitHub repositories. Open any public repo on GitHub, and use the extension as a client to prompt OpenAI for naming suggestions using the GitHub repository's description and your OpenAI API key.
 
-image:src/assets/cover.png[]
+image:images/cover.png[]
 
 
 == About
@@ -30,17 +30,17 @@ Once you have finished installing the extension, you can use it to generate sugg
 
 [cols="2"]
 |===
-| image:screenshots/gh.png[]
+| image:images/gh.png[]
 a|
 If you are viewing a public repository on GitHub, the extension will automatically detect it and prefills the current repository name as well as the current username in the pop-up (this info is used to query the public GitHub API to get the repo description, which is used to build your individual prompt).
 
 In case you are not actively viewing the repository you want to have suggestions for, you can manually enter the repository name and username in the pop-up as well.
 
-| image:screenshots/custom.png[]
+| image:images/custom.png[]
 a|
 Beside this GitHub flow, you can also use the extension to generate suggestions for a custom repo description. To do so, simply enter the description under the pop-up's "Custom" tab.
 
-| image:screenshots/suggestions.png[]
+| image:images/suggestions.png[]
 a|
 Once you have all your details filled in, you can click the button below the form elements to get your suggestions.
 
