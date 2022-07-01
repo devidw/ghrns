@@ -21,7 +21,7 @@ The extension requires credentials for the OpenAI API. Once you have your API ke
 
 
 == Installation
-. Get your copy of the extension from the Chrome Web Store
+. Get your copy of the extension from the https://chrome.google.com/webstore/detail/poociecpnnmbmbfbmimfnjahceocgppm[Chrome Web Store]
 . Once the installation is complete, you can enter your OpenAI API key in the extension options (right-click the extension icon and select "Options")
 
 
