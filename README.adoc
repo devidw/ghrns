@@ -79,3 +79,13 @@ Access to the browser tabs is needed to detect the current repository. See if th
 
 ==== Remote code justification
 Remote code is needed to generate suggestions, since the corresponding API is not part of the extension, it invokes server-side code of a third party service: OpenAI.
+
+
+---
+
+
++++
+<p align=center>
+<a href="https://www.producthunt.com/posts/github-repository-naming-suggestions?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-github&#0045;repository&#0045;naming&#0045;suggestions" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=351293&theme=dark" alt="GitHub&#0032;Repository&#0032;Naming&#0032;Suggestions - AI&#0032;powered&#0032;naming&#0032;suggestions&#0032;for&#0032;your&#0032;GitHub&#0032;repositories | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+</p>
++++
